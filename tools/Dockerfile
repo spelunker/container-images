@@ -8,9 +8,8 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV TINI_VERSION v0.19.0
-ENV TINI_VERSION v0.18.0
-ARG ARCH=amd64
-RUN curl -sL https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${ARCH} -o /tini
+ARG TARGETARCH 
+RUN curl -sL https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} -o /tini
 RUN chmod +x /tini
 
 ENTRYPOINT ["/tini", "--"]
